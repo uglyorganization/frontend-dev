@@ -1,0 +1,58 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Story from "../components/Story.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import List from "../components/List.astro";
+import ListItem from "../components/ListItem.astro";
+import Section from "../components/Section.astro";
+import userData from "../data/users.json";
+const title = "the ugly company";
+const story = `top users in /dev`;
+---
+
+<Layout title={title} desc={"we write ugly code"}>
+  <Header title={title} description={"we write ugly code"} />
+  <Story story={story} />
+  <div class="grid grid-cols-3 gap-4">
+  <Section>
+    <SectionTitle title="total votes" />
+    <List>
+      {
+        userData
+        .slice(0, 25)
+        .sort((a, b) => b.totalVotes - a.totalVotes) 
+        .map((u) => (
+          <ListItem title={u.user} desc={u.totalVotes} />
+        ))
+      }
+    </List>
+  </Section>
+    <Section>
+    <SectionTitle title="max votes" />
+    <List>
+      {
+        userData
+        .slice(0, 25)
+        .sort((a, b) => b.maxVotes - a.maxVotes) 
+        .map((u) => (
+          <ListItem title={u.user} desc={u.maxVotes} />
+        ))
+      }
+    </List>
+  </Section>
+      <Section>
+    <SectionTitle title="contributions" />
+    <List>
+      {
+        userData
+        .slice(0, 25)
+        .sort((a, b) => b.numberPosts - a.numberPosts) 
+        .map((u) => (
+          <ListItem title={u.user} desc={u.numberPosts} />
+        ))
+      }
+    </List>
+  </Section>
+  </div>
+</Layout>

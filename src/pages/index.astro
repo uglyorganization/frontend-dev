@@ -20,8 +20,8 @@ const story = `top users in /dev`;
     <List>
       {
         userData
-        .slice(0, 25)
         .sort((a, b) => b.totalVotes - a.totalVotes) 
+        .slice(0, 25)
         .map((u) => (
           <ListItem title={u.user} desc={u.totalVotes} />
         ))
@@ -33,8 +33,8 @@ const story = `top users in /dev`;
     <List>
       {
         userData
-        .slice(0, 25)
         .sort((a, b) => b.maxVotes - a.maxVotes) 
+        .slice(0, 25)
         .map((u) => (
           <ListItem title={u.user} desc={u.maxVotes} />
         ))
@@ -46,8 +46,8 @@ const story = `top users in /dev`;
     <List>
       {
         userData
-        .slice(0, 25)
         .sort((a, b) => b.numberPosts - a.numberPosts) 
+        .slice(0, 25)
         .map((u) => (
           <ListItem title={u.user} desc={u.numberPosts} />
         ))

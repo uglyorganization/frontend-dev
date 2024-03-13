@@ -14,7 +14,7 @@ const story = `top users in /dev`;
 <Layout title={title} desc={"we write ugly code"}>
   <Header title={title} description={"we write ugly code"} />
   <Story story={story} />
-  <div class="grid grid-cols-3 gap-4">
+  <div class="grid grid-cols-5 gap-6">
   <Section>
     <SectionTitle title="total votes" />
     <List>
@@ -41,7 +41,7 @@ const story = `top users in /dev`;
       }
     </List>
   </Section>
-      <Section>
+  <Section>
     <SectionTitle title="contributions" />
     <List>
       {
@@ -54,5 +54,7 @@ const story = `top users in /dev`;
       }
     </List>
   </Section>
+  <Section> <SectionTitle title="toxicity" /> </Section>
+  <Section> <SectionTitle title="impact" /> </Section>
   </div>
 </Layout>

@@ -16,6 +16,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Configure AWS Credentials for shared
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github-shared-role
+          aws-region: eu-west-1
+
+      - name: Download from S3 
+        run: aws s3 cp s3://${{ secrets.SHARED_BUCKET }}/cron-content-generator/output.json ./src/data/users.json
+
       - name: Configure AWS Credentials for frontend
         uses: aws-actions/configure-aws-credentials@v2
         with:
